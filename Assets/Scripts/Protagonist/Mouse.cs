@@ -15,14 +15,19 @@ public class Mouse : MonoBehaviour
     public bool ifShoutBulltX;
     [SerializeField] float shoutTime;
     private float delTime;
-    public GameObject Portal_x;//传送门
-    public GameObject Portal_y;
+    public Portal Portal_x;//传送门
+    public Portal Portal_y;
     public bool hasbullet;//是否仍存在子弹
     public Transform mouseStar;//准星
+    private CameraRotarion cameraRotarion;
+    private Move move;
+    private Cube cubeScript;
     private void Awake()
     {
         delTime = shoutTime;
         hasbullet = false;
+        cameraRotarion = GetComponent<CameraRotarion>();
+        move = GetComponent<Move>();
     }
     private void Update()
     {
@@ -42,6 +47,7 @@ public class Mouse : MonoBehaviour
                 return;
             }
             delTime = 0;
+            hasbullet = true;
             Bullet bulletPerfab;
             if (ifShoutBulltX)
             {
@@ -57,8 +63,8 @@ public class Mouse : MonoBehaviour
             }
             bulletPerfab.transform.SetParent(bulletsPool);
             bulletPerfab.mouse = this;
-            Vector3 direction = mouseStar.position - playerCamera.position;
-            bulletPerfab.GetComponent<Rigidbody>().velocity = direction * bulletSpeed;
+            //Vector3 direction = (mouseStar.position - playerCamera.transform.position).normalized;
+            bulletPerfab.GetComponent<Rigidbody>().velocity = mouseStar.forward * bulletSpeed;
         }
         //投方块
         if(cube!= null && Input.GetMouseButtonDown(0))
@@ -67,6 +73,7 @@ public class Mouse : MonoBehaviour
             rb.useGravity = true;
             rb.velocity = playerCamera.forward * throwSpeed;
             cube = null;
+            cubeScript = null;
         }
         //举方块
         if (Input.GetMouseButtonUp(1))
@@ -77,6 +84,7 @@ public class Mouse : MonoBehaviour
             }
             cube.GetComponent<Rigidbody>().useGravity = true;
             cube = null;
+            cubeScript = null;
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -93,6 +101,8 @@ public class Mouse : MonoBehaviour
                     Rigidbody rb = cube.GetComponent<Rigidbody>();
                     rb.useGravity = false;
                     rb.velocity = Vector3.zero;
+                    cubeScript = cube.GetComponent<Cube>();
+                    cubeScript.hasIntoPortal = false;
                 }
             }
         }
@@ -102,9 +112,19 @@ public class Mouse : MonoBehaviour
             {
                 return;
             }
+            //如果穿过传送门
+            if (cubeScript.hasIntoPortal)
+            {
+                Vector3 vector = new(cameraRotarion.x_ratation / 9, cameraRotarion.y_ratation / 7, 0);
+                cube.GetComponent<Rigidbody>().velocity = move.y * move.speed;
+                cube.transform.position += vector;
+                return;
+            }
+            //未穿
             Vector3 rayOrgin = playerCamera.position;
             Vector3 cubePosition = rayOrgin + playerCamera.forward * max_distance;
-            cube.transform.position = Vector3.Lerp(cube.transform.position, cubePosition, smoothedSpeed * Time.deltaTime);
+            //cube.transform.position = Vector3.Lerp(cube.transform.position, cubePosition, smoothedSpeed * Time.deltaTime);
+            cube.transform.position = cubePosition;
         }
     }
 }
