@@ -4,8 +4,7 @@ public class Move : MonoBehaviour
 {
     private Rigidbody rd;//本刚体
     //xy轴移动
-    [SerializeField] public float speed;//速度
-    public Vector3 y;//y轴移动量;
+    [SerializeField] float speed;//速度
     //z轴移动
     private bool isGround = false;//是否不在空中
     [SerializeField] float jumpSpeed;//跳跃速度
@@ -26,8 +25,7 @@ public class Move : MonoBehaviour
         //x,y移动
         Vector3 moveDir = new();
         moveDir += transform.forward * Input.GetAxis("Vertical");
-        y = moveDir += transform.right * Input.GetAxis("Horizontal");
-        moveDir += y;
+        moveDir += moveDir += transform.right * Input.GetAxis("Horizontal");
         moveDir *= speed;
         //不在跳跃
         if (isGround)

@@ -1168,7 +1168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  y: {x: 0, y: 0, z: 0}
   jumpSpeed: 20
   fallAcc: 50
   fallInit: 10
@@ -1230,9 +1229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465eecf024b90ed4c8aad06956f80583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x_ratation: 0
-  y_ratation: 0
-  sumY_ratation: 0
   mouseSpeed: 30
   playerCamera: {fileID: 963194228}
 --- !u!114 &1332756985
@@ -1247,10 +1243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5780ba2d0110c4e81a291a1788acde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 963194228}
-  max_distance: 6
-  smoothedSpeed: 15
-  throwSpeed: 10
   bulletsPool: {fileID: 1028714696}
   Bullet_x: {fileID: 5074315154533239216, guid: 5f1c0a1be5f5e3044b6521af53bbe01d, type: 3}
   Bullet_y: {fileID: 764283650402590280, guid: 0ef964f236daf154a96b28651c82cef1, type: 3}
@@ -1261,6 +1253,12 @@ MonoBehaviour:
   Portal_y: {fileID: 1868994566}
   hasbullet: 0
   mouseStar: {fileID: 26677937}
+  playerCamera: {fileID: 963194228}
+  max_distance: 6
+  smoothedSpeed: 15
+  throwSpeed: 10
+  cubeXSpeed: 2.5
+  cubeYSpeed: 4
 --- !u!1 &1469671003
 GameObject:
   m_ObjectHideFlags: 0
