@@ -1231,6 +1231,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSpeed: 30
   playerCamera: {fileID: 963194228}
+  target: {fileID: 1332756982}
+  smoothSpeed: 3
+  minDistance: 0.5
 --- !u!114 &1332756985
 MonoBehaviour:
   m_ObjectHideFlags: 0

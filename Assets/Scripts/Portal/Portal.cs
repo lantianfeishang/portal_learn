@@ -28,7 +28,10 @@ public class Portal : MonoBehaviour
             CameraRotarion cameraRotarion = collision.gameObject.GetComponent<CameraRotarion>();
             cameraRotarion.LookTransform(portal_other.transform);
 
-            collision.gameObject.transform.position = portal_other.transform.position + portal_other.transform.forward * 1;
+            Quaternion quaternion = collision.gameObject.transform.rotation;
+            quaternion.x = 0;
+            quaternion.z = 0;
+            collision.gameObject.transform.SetPositionAndRotation(portal_other.transform.position + portal_other.transform.forward * 1, quaternion);
         }
     }
 }
