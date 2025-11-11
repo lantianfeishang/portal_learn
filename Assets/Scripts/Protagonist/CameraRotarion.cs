@@ -37,26 +37,18 @@ public class CameraRotarion : MonoBehaviour
         // 射线检测：从玩家到期望位置发射射线，检测障碍物
         Vector3 rayOrigin = target.position; // 射线起点
         Vector3 rayDirection = target.up * offset.y; // 射线方向
-        rayDirection += target.right * offset.z;
+        rayDirection += target.forward * offset.z;
         float rayDistance = rayDirection.magnitude; // 射线长度
 
         // 发射射线（只检测指定层的障碍物）
         if (Physics.Raycast(rayOrigin, rayDirection, rayDistance, 1 << 6))
         {
             smoothedPosition = new Vector3(0, rayOrigin.y + 0.5f, 0);
-            playerCamera.localPosition = Vector3.Lerp(playerCamera.localPosition, smoothedPosition, smoothSpeed * Time.deltaTime);
-            return;
         }
-        Vector3 rayDirection_2 = target.up * offset.y;
-        rayDirection_2 -= target.right * offset.z;
-        //对称
-        if (Physics.Raycast(rayOrigin, rayDirection_2, rayDistance, 1 << 6))
+        else
         {
-            smoothedPosition = new Vector3(0, rayOrigin.y + 0.5f, 0);
-            playerCamera.localPosition = Vector3.Lerp(playerCamera.localPosition, smoothedPosition, smoothSpeed * Time.deltaTime);
-            return;
+            smoothedPosition = offset;
         }
-        smoothedPosition = offset;
         playerCamera.localPosition = Vector3.Lerp(playerCamera.localPosition, smoothedPosition, smoothSpeed * Time.deltaTime);
     }
 
