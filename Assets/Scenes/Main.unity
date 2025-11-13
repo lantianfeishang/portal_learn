@@ -772,6 +772,7 @@ GameObject:
   m_Component:
   - component: {fileID: 878520434}
   - component: {fileID: 878520436}
+  - component: {fileID: 878520437}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -788,7 +789,7 @@ Transform:
   m_GameObject: {fileID: 878520433}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -803,7 +804,7 @@ Camera:
   m_GameObject: {fileID: 878520433}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -845,6 +846,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &878520437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878520433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3e264cb687fd64583437d0f113f23d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portalTransform: {fileID: 542927979}
+  cube: {fileID: 899606704}
 --- !u!1 &899606703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,6 +1068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1023710290}
   - component: {fileID: 1023710292}
+  - component: {fileID: 1023710293}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1069,7 +1085,7 @@ Transform:
   m_GameObject: {fileID: 1023710289}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1084,7 +1100,7 @@ Camera:
   m_GameObject: {fileID: 1023710289}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1126,6 +1142,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1023710293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023710289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3e264cb687fd64583437d0f113f23d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portalTransform: {fileID: 1868994562}
+  cube: {fileID: 899606704}
 --- !u!1 &1028714695
 GameObject:
   m_ObjectHideFlags: 0
