@@ -10,7 +10,7 @@ public class Portal : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    private void OnEnable()
+    private void Start()
     {
         if (portal_other.gameObject.activeSelf)
         {
