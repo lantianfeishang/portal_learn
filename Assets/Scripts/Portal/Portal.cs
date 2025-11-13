@@ -1,8 +1,23 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Portal : MonoBehaviour
 {
     public Portal portal_other;//另一个传送门
+    private MeshRenderer meshRenderer;
+    private void Awake()
+    {
+        meshRenderer = GetComponent<MeshRenderer>();
+    }
+
+    private void OnEnable()
+    {
+        if (portal_other.gameObject.activeSelf)
+        {
+            meshRenderer.material = meshRenderer.materials[1];
+            portal_other.meshRenderer.material = portal_other.meshRenderer.materials[1];
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if(!portal_other.gameObject.activeSelf)

@@ -2,11 +2,28 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private float timer;
+    private float delTime;//计时器
     public Portal portal;//传送门
     public Portal portal_other;//另一个传送门
     private readonly float distance = 4;//两门距离
 
     public Mouse mouse;//反馈回射击脚本
+    private void Awake()
+    {
+        timer = 2;
+        delTime = 0;
+    }
+    private void Update()
+    {
+        if (delTime < timer)
+        {
+            delTime += Time.deltaTime;
+            return;
+        }
+        mouse.hasbullet = false;
+        Destroy(gameObject);
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("Wall"))
